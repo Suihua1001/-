@@ -83,3 +83,15 @@
 .room-instruction:has(> .bilingual:empty){display:none}
 .screen-caption strong{font-size:8.5cqw!important;color:#fff}.screen-caption small{font-size:5cqw!important;color:#d7eaf2}
 @media(max-width:760px){.hero-copy h1{font-size:35px!important}.hero-copy h1>small{font-size:14px!important}.hero-portfolio strong{font-size:20px!important}.hero-portfolio small{font-size:11px!important}.quote-block p,.single-line-quote{font-size:14px!important}.quote-block p .bilingual-zh{font-size:9px!important}.screen-caption strong{font-size:8cqw!important}.screen-caption small{font-size:5.5cqw!important}}
+/* Improve contrast for secondary copy while preserving the dark atmosphere. */
+.hero-description,.live-label,.room-instruction,.room-top-right,.explore-hint,.site-footer,.footer-coordinate{color:#b9cfdb!important;font-size:clamp(9px,1vw,13px)!important;opacity:1!important}
+.hero-description .bilingual-zh,.live-label .bilingual-zh,.room-instruction .bilingual-zh,.explore-hint .bilingual-zh{font-size:.72em!important;color:#d2e0e7!important;opacity:.9!important}
+.eyebrow{color:#bad1de!important;font-size:10px!important;letter-spacing:1.8px!important;text-shadow:0 1px 10px #000}
+.eyebrow .bilingual-zh{font-size:.72em!important;color:#d4e0e8!important}
+.screen-status,.screen-bottom{color:#b8d5e2!important;font-size:5cqw!important;opacity:1!important;text-shadow:0 1px 8px #001}
+.screen-caption small{color:#e0edf2!important;opacity:.92!important}
+.room-instruction{font-size:10px!important}.room-instruction svg{width:17px;height:17px}
+.site-footer{font-size:9px!important;color:#a9c3d1!important}.site-footer .bilingual-zh{color:#d4e1e7!important}
+.archive-statusbar,.monitor-top-signal,.archive-breadcrumb,.collection-heading>span,.work-card-info>.eyebrow,.work-card-info p,.work-meta,.field-help{color:#a7c3d1!important}
+.collection-heading>span,.work-card-info p{font-size:12px!important}.work-card-info>.eyebrow{font-size:9px!important}.work-meta{font-size:10px!important}.pending-translation{font-size:11px!important;color:#d7c891!important}
+@media(max-width:760px){.hero-description,.live-label,.room-instruction,.explore-hint,.site-footer{font-size:8px!important}.eyebrow{font-size:8px!important}.room-instruction{font-size:8px!important}.site-footer{font-size:7px!important}.screen-status{font-size:4.8cqw!important}.collection-heading>span,.work-card-info p{font-size:11px!important}.work-card-info>.eyebrow{font-size:8px!important}}
