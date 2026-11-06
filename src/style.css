@@ -111,3 +111,5 @@
 .room-top-right{font-size:10px!important;line-height:1.5;letter-spacing:2px!important}.room-top-right .bilingual-en{font-size:1em!important}.room-top-right .bilingual-zh{font-size:.72em!important}.room-top-right svg{width:26px!important;height:26px!important}
 .hero-copy{right:15%!important;max-width:350px!important}.hero-copy h1,.hero-portfolio{max-width:100%}
 @media(max-width:760px){.room-top-right{font-size:8px!important}.room-top-right svg{width:21px!important;height:21px!important}.hero-copy{left:5%!important;right:auto!important;max-width:88%!important}}
+/* Desktop hero copy sits in the open right-side wall area, clear of the desk. */
+@media(min-width:761px){.hero-copy{right:3%!important;left:auto!important;max-width:350px!important}}
