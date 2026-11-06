@@ -10,7 +10,8 @@
     "test": "node --test tests/*.test.mjs",
     "check": "tsc --noEmit",
     "admin:init": "node server/admin.mjs",
-    "test:browser": "playwright test"
+    "test:browser": "playwright test",
+    "vercel-build": "npm run check && npm run build"
   },
   "dependencies": {
     "react": "^19.2.0",
