@@ -96,3 +96,14 @@
 .collection-heading>span,.work-card-info p{font-size:12px!important}.work-card-info>.eyebrow{font-size:9px!important}.work-meta{font-size:10px!important}.pending-translation{font-size:11px!important;color:#d7c891!important}
 @media(max-width:760px){.hero-description,.live-label,.room-instruction,.explore-hint,.site-footer{font-size:8px!important}.eyebrow{font-size:8px!important}.room-instruction{font-size:8px!important}.site-footer{font-size:7px!important}.screen-status{font-size:4.8cqw!important}.collection-heading>span,.work-card-info p{font-size:11px!important}.work-card-info>.eyebrow{font-size:8px!important}}
 @media(max-width:760px){.hero-copy{right:auto;left:6%;max-width:88%}}
+/* Stellar screen contrast: light glass gets ink, dark glass gets light type. */
+.screen-profile .screen-status,.screen-games .screen-status,.screen-art .screen-status{color:#173f58!important;text-shadow:0 1px 3px #e9fcff99}
+.screen-profile .screen-caption,.screen-games .screen-caption,.screen-art .screen-caption{color:#123c56!important;text-shadow:0 1px 3px #effcffcc}
+.screen-profile .screen-caption strong,.screen-games .screen-caption strong,.screen-art .screen-caption strong{color:#0d3550!important;font-size:10cqw!important;font-weight:700!important}
+.screen-profile .screen-caption small,.screen-games .screen-caption small,.screen-art .screen-caption small{color:#174b66!important;font-size:6.4cqw!important;font-weight:600!important}
+.screen-design .screen-status,.screen-writing .screen-status{color:#d8edf5!important;text-shadow:0 1px 7px #001}
+.screen-design .screen-caption,.screen-writing .screen-caption{color:#e8f7fb!important;text-shadow:0 1px 8px #001}
+.screen-design .screen-caption strong,.screen-writing .screen-caption strong{color:#f1fbff!important;font-size:10cqw!important;font-weight:700!important}
+.screen-design .screen-caption small,.screen-writing .screen-caption small{color:#c3e3ee!important;font-size:6.4cqw!important;font-weight:600!important}
+.screen-profile .screen-graphic,.screen-games .screen-graphic,.screen-art .screen-graphic{opacity:.26}
+@media(max-width:760px){.screen-profile .screen-caption strong,.screen-games .screen-caption strong,.screen-art .screen-caption strong,.screen-design .screen-caption strong,.screen-writing .screen-caption strong{font-size:10cqw!important}.screen-profile .screen-caption small,.screen-games .screen-caption small,.screen-art .screen-caption small,.screen-design .screen-caption small,.screen-writing .screen-caption small{font-size:6.8cqw!important}}
