@@ -49,7 +49,7 @@
 .site-header nav{gap:30px}.site-header nav button{font-size:11px;letter-spacing:.4px;text-align:center}
 .site-header nav .bilingual{align-items:center}.site-header nav .bilingual-zh{font-size:8px;letter-spacing:1px}
 .nav-active:after{bottom:12px}.station-online{font-size:8px;letter-spacing:.7px}.station-online .bilingual-zh{font-size:7px}
-.hero-copy{max-width:360px;right:5.4%}.hero-copy h1{font-family:Georgia,"Times New Roman",serif;letter-spacing:-.7px;font-size:clamp(29px,2.65vw,42px);line-height:1.3;color:#dbeaf2;margin:25px 0 20px}
+.hero-copy{max-width:360px;right:10%}.hero-copy h1{font-family:Georgia,"Times New Roman",serif;letter-spacing:-.7px;font-size:clamp(29px,2.65vw,42px);line-height:1.3;color:#dbeaf2;margin:25px 0 20px}
 .hero-copy h1>span{color:inherit;white-space:nowrap}.hero-copy h1>small{display:block;font-family:"Songti SC",SimSun,serif;font-weight:400;letter-spacing:2px;font-size:12px;color:#9bb7cb;line-height:1.7;margin-top:12px}
 .hero-portfolio{margin:0 0 23px;line-height:1.5}.hero-portfolio strong{font-size:18px;letter-spacing:.4px;font-weight:700;color:#c6dbe9}.hero-portfolio small{display:block;font-size:10px;letter-spacing:2px;color:#799bb3;margin-top:5px}
 .hero-copy>.eyebrow .bilingual-zh{font-size:7px;letter-spacing:1px}.hero-description{font-size:8px;line-height:1.6;letter-spacing:1px}.hero-description .bilingual-zh{font-size:8px}.live-label{margin-top:19px;font-size:7px;line-height:1.6;align-items:flex-start}.live-label>i{margin-top:4px}
@@ -79,7 +79,7 @@
 .hero-portfolio small{font-size:clamp(12px,1vw,16px)!important;color:#d1e0e9!important;letter-spacing:1.5px!important}
 .bilingual-en{font-size:1em!important;font-weight:inherit}.bilingual-zh{font-size:.62em!important;opacity:.72}
 .quote-block{max-width:calc(100vw - 10%)!important;display:block!important}.quote-mark,.quote-credit{display:none!important}.quote-block p,.single-line-quote{font-size:clamp(15px,1.35vw,22px)!important;line-height:1.5!important;letter-spacing:.35px!important;color:#fff!important;font-family:"Songti SC",SimSun,serif!important;white-space:nowrap!important;overflow-x:auto!important;text-shadow:0 2px 15px #000}
-.quote-block p::before{content:'“';}.quote-block p::after{content:'”';}.quote-block p .bilingual-zh{font-size:.62em!important}
+.quote-block p::before,.quote-block p::after{content:none!important}.quote-block p .bilingual-zh{font-size:.62em!important}
 .room-instruction:has(> .bilingual:empty){display:none}
 .screen-caption strong{font-size:8.5cqw!important;color:#fff}.screen-caption small{font-size:5cqw!important;color:#d7eaf2}
 @media(max-width:760px){.hero-copy h1{font-size:35px!important}.hero-copy h1>small{font-size:14px!important}.hero-portfolio strong{font-size:20px!important}.hero-portfolio small{font-size:11px!important}.quote-block p,.single-line-quote{font-size:14px!important}.quote-block p .bilingual-zh{font-size:9px!important}.screen-caption strong{font-size:8cqw!important}.screen-caption small{font-size:5.5cqw!important}}
@@ -95,3 +95,4 @@
 .archive-statusbar,.monitor-top-signal,.archive-breadcrumb,.collection-heading>span,.work-card-info>.eyebrow,.work-card-info p,.work-meta,.field-help{color:#a7c3d1!important}
 .collection-heading>span,.work-card-info p{font-size:12px!important}.work-card-info>.eyebrow{font-size:9px!important}.work-meta{font-size:10px!important}.pending-translation{font-size:11px!important;color:#d7c891!important}
 @media(max-width:760px){.hero-description,.live-label,.room-instruction,.explore-hint,.site-footer{font-size:8px!important}.eyebrow{font-size:8px!important}.room-instruction{font-size:8px!important}.site-footer{font-size:7px!important}.screen-status{font-size:4.8cqw!important}.collection-heading>span,.work-card-info p{font-size:11px!important}.work-card-info>.eyebrow{font-size:8px!important}}
+@media(max-width:760px){.hero-copy{right:auto;left:6%;max-width:88%}}
