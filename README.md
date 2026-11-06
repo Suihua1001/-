@@ -13,7 +13,7 @@ npm run admin:init
 npm run dev
 ```
 
-服务默认端口 3000。前台 `/`，后台 `/admin`。首次执行 `admin:init` 会生成管理员 `suihua`，随机密码保存在 `.data/initial-admin.txt`，请私下读取，不要提交、截图或分享。登录后在“账号设置”修改密码；修改后初始凭据文件自动移除。再次运行初始化会保留已有账号；仅在有意重置密码时使用 `node server/admin.mjs --reset`，重置会注销所有会话。
+服务默认端口 3000。前台 `/`，后台 `/admin`。首次执行 `admin:init` 会生成管理员 `suihua`；如设置 `ADMIN_INITIAL_PASSWORD`，将使用该密码，否则生成随机密码并保存在 `.data/initial-admin.txt`，请私下读取，不要提交、截图或分享。登录后在“账号设置”修改密码；修改后初始凭据文件自动移除。再次运行初始化会保留已有账号；仅在有意重置密码时使用 `node server/admin.mjs --reset`，重置会注销所有会话。
 
 生产运行：`npm run check && npm run build && npm start`。开发进程和端口不能当作公网部署。前台转场为基于真实加载完成状态的短暂过渡；背景采用生成的写实底图与分层交互，属于 2.5D 小幅视差，不是真实自由漫游 3D 场景。
 

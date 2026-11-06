@@ -3,7 +3,8 @@ import { randomBytes } from 'node:crypto';
 import { writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 if (db.prepare('SELECT 1 FROM admins WHERE username=?').get('suihua') && !process.argv.includes('--reset')) { console.log('Admin already exists; keeping current credentials. Use --reset only to intentionally replace them.'); process.exit(0); }
-const password=randomBytes(24).toString('base64url');
+const password=process.env.ADMIN_INITIAL_PASSWORD || randomBytes(24).toString('base64url');
+if (password.length < 12 || password.length > 256) throw new Error('ADMIN_INITIAL_PASSWORD must be 12-256 characters');
 const {salt,hash}=hashPassword(password);
 db.prepare('INSERT OR REPLACE INTO admins VALUES (?,?,?)').run('suihua',salt,hash);
 db.prepare('DELETE FROM sessions').run();
