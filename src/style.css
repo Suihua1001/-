@@ -113,3 +113,5 @@
 @media(max-width:760px){.room-top-right{font-size:8px!important}.room-top-right svg{width:21px!important;height:21px!important}.hero-copy{left:5%!important;right:auto!important;max-width:88%!important}}
 /* Desktop hero copy sits in the open right-side wall area, clear of the desk. */
 @media(min-width:761px){.hero-copy{right:3%!important;left:auto!important;max-width:350px!important}}
+.room-top-right{font-size:14px!important;color:#d8e7ee!important;font-weight:600!important;letter-spacing:2.2px!important}.room-top-right .bilingual-en{font-size:1em!important}.room-top-right .bilingual-zh{font-size:.7em!important;color:#b9d0dc!important;font-weight:400!important}.room-top-right svg{width:30px!important;height:30px!important}
+@media(max-width:760px){.room-top-right{font-size:10px!important}.room-top-right svg{width:23px!important;height:23px!important}}
