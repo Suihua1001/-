@@ -1,4 +1,5 @@
 import {b,ui} from './Bilingual';
+import {supabase} from './lib/supabase';
 import React,{useEffect,useState} from 'react';
 import {ArrowLeft,ArrowUpRight,Check,Eye,FilePlus2,Gamepad2,ImagePlus,Languages,Loader2,LogOut,Monitor,Save,Settings,ShieldCheck,Trash2,Upload,X} from 'lucide-react';
 import {api,labels,type Category,type Profile,type SiteContent,type Work,type WorkContent} from './types';
@@ -10,7 +11,7 @@ const headers={'x-csrf-token':csrf};
 async function act(fn:()=>Promise<void>){setError('');setNotice('');setBusy(true);try{await fn();}catch(e){setError((e as Error).message);}finally{setBusy(false);}}
 async function refresh(){const d=await api('/api/admin/content');setData(d);setProfile(d.profile);return d;}
 function leave(action:()=>void){if(dirty&&!window.confirm('有尚未保存的修改，确定离开吗？'))return;setDirty(false);setDeleting(false);setError('');setNotice('');action();}
-async function login(e:React.FormEvent){e.preventDefault();await act(async()=>{const s=await api('/api/login',{method:'POST',body:JSON.stringify({username,password})});setCsrf(s.csrf);setPassword('');await refresh();});}
+async function login(e:React.FormEvent){e.preventDefault();await act(async()=>{if(!supabase)throw new Error('Supabase 尚未配置 / Supabase is not configured');const email=username.includes('@')?username:`${username}@suihua.local`;const {error}=await supabase.auth.signInWithPassword({email,password});if(error)throw new Error('登录失败：请确认 Supabase Auth 中已创建账号');setCsrf('supabase');setPassword('');const d=await api('/api/admin/content').catch(()=>({profile:null,works:[]}));setData(d);setProfile(d.profile||null);});}
 function chooseTab(t:string){leave(()=>{setTab(t);setEditing(null);setLanguage('zh');});}
 function chooseWork(w:Work){leave(()=>{setEditing(structuredClone(w));setLanguage('zh');});}
 function update(field:keyof WorkContent,value:string|string[]){if(!editing)return;setEditing({...editing,[language]:{...editing[language],[field]:value}});setDirty(true);}
