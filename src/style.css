@@ -148,3 +148,4 @@
 @media(max-width:760px){.archive-overlay .monitor-shell{border-radius:22px;padding:10px 9px 0}.archive-overlay .monitor-glass{border-width:4px;border-radius:16px}.archive-overlay .monitor-bottom{height:48px}.archive-overlay .monitor-top{height:28px}}
 /* Profile editor is Chinese-only. */
 .profile-editor-zh-only .editor-field-en,.profile-editor-zh-only .translate-button,.profile-editor-zh-only .english-draft,.profile-editor-zh-only .checkbox-label-english{display:none!important}
+.profile-editor-zh-only .field-grid>.editor-field:nth-child(2){display:none!important}.profile-editor-zh-only .editor-section-heading .secondary-action,.profile-editor-zh-only .editor-section-heading button{display:none!important}.profile-editor-zh-only .field-grid{grid-template-columns:1fr!important}
