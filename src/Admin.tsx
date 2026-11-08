@@ -1,5 +1,7 @@
 import {b,ui} from './Bilingual';
+import {cloudbaseAuth} from './lib/cloudbase';
 import {supabase} from './lib/supabase';
+import {readCloudBaseAdminContent} from './lib/cloudbaseContent';
 import React,{useEffect,useState} from 'react';
 import {ArrowLeft,ArrowUpRight,Check,Eye,FilePlus2,Gamepad2,ImagePlus,Languages,Loader2,LogOut,Monitor,Save,Settings,ShieldCheck,Trash2,Upload,X} from 'lucide-react';
 import {api,labels,type Category,type Profile,type SiteContent,type Work,type WorkContent} from './types';
@@ -9,9 +11,9 @@ useEffect(()=>{api('/api/admin/session').then(async s=>{setCsrf(s.csrf);const d=
 useEffect(()=>{if(!dirty)return;const fn=(e:BeforeUnloadEvent)=>{e.preventDefault();e.returnValue='';};addEventListener('beforeunload',fn);return()=>removeEventListener('beforeunload',fn);},[dirty]);
 const headers={'x-csrf-token':csrf};
 async function act(fn:()=>Promise<void>){setError('');setNotice('');setBusy(true);try{await fn();}catch(e){setError((e as Error).message);}finally{setBusy(false);}}
-async function refresh(){if(!supabase)throw new Error('Supabase 尚未配置');const {data:p}=await supabase.from('profiles').select('*').limit(1).maybeSingle();const {data:rows,error}=await supabase.from('works').select('*').order('sort_order').order('created_at');if(error)throw error;const d={profile:p||null,works:(rows||[]).map((w:any)=>({id:w.id,category:w.category,zh:{title:w.title,subtitle:'',summary:w.summary||'',body:w.body||'',contribution:w.contribution||'',year:'',engine:'',cover:w.cover_url||'',gallery:w.gallery_urls||[],video:w.video_url||'',link:w.project_url||'',demo:w.demo_url||''},en:{title:w.title_en||'',summary:w.summary_en||'',body:w.body_en||'',contribution:w.contribution_en||''},published:!!w.published,translation_status:w.translation_status||'missing',sort_order:w.sort_order||0,updated_at:w.updated_at||''}))};setData(d);setProfile(d.profile);return d;}
+async function refresh(){const d=await readCloudBaseAdminContent();setData(d);setProfile(d.profile||null);return d;}
 function leave(action:()=>void){if(dirty&&!window.confirm('有尚未保存的修改，确定离开吗？'))return;setDirty(false);setDeleting(false);setError('');setNotice('');action();}
-async function login(e:React.FormEvent){e.preventDefault();await act(async()=>{if(!supabase)throw new Error('Supabase 尚未配置 / Supabase is not configured');const email=username.includes('@')?username:`${username}@suihua.local`;const {error}=await supabase.auth.signInWithPassword({email,password});if(error)throw new Error(`Supabase 登录失败：${error.message}`);setCsrf('supabase');setPassword('');const d=await api('/api/admin/content').catch(()=>({profile:null,works:[]}));setData(d);setProfile(d.profile||null);});}
+async function login(e:React.FormEvent){e.preventDefault();await act(async()=>{const email=username.includes('@')?username:`${username}@suihua.local`;await cloudbaseAuth.signInWithEmailAndPassword(email,password);setCsrf('cloudbase');setPassword('');const d=await readCloudBaseAdminContent();setData(d);setProfile(d.profile||null);});}
 function chooseTab(t:string){leave(()=>{setTab(t);setEditing(null);setLanguage('zh');});}
 function chooseWork(w:Work){leave(()=>{setEditing(structuredClone(w));setLanguage('zh');});}
 function update(field:keyof WorkContent,value:string|string[]){if(!editing)return;setEditing({...editing,[language]:{...editing[language],[field]:value}});setDirty(true);}
