@@ -149,3 +149,5 @@
 /* Profile editor is Chinese-only. */
 .profile-editor-zh-only .editor-field-en,.profile-editor-zh-only .translate-button,.profile-editor-zh-only .english-draft,.profile-editor-zh-only .checkbox-label-english{display:none!important}
 .profile-editor-zh-only .field-grid>.editor-field:nth-child(2){display:none!important}.profile-editor-zh-only .editor-section-heading .secondary-action,.profile-editor-zh-only .editor-section-heading button{display:none!important}.profile-editor-zh-only .field-grid{grid-template-columns:1fr!important}
+/* Subtle pixel finish: decorative UI only, body copy stays readable. */
+.eyebrow,.screen-status,.screen-bottom,.station-online,.site-footer,.archive-statusbar,.monitor-top,.monitor-top-signal,.clue-number{font-family:"Courier New",Consolas,monospace!important;text-shadow:1px 0 #9bd9ed33,0 1px #9bd9ed22;image-rendering:pixelated}.hero-copy h1,.hero-portfolio strong,.resume-title{ text-shadow:1px 0 #a6d9ec44,2px 2px 0 #16384e,0 0 16px #000!important}.resume-linear-text,.profile-role,.work-detail .prose,.profile-bio{font-family:"Microsoft YaHei","微软雅黑",sans-serif!important}
