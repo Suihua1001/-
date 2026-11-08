@@ -151,3 +151,11 @@
 .profile-editor-zh-only .field-grid>.editor-field:nth-child(2){display:none!important}.profile-editor-zh-only .editor-section-heading .secondary-action,.profile-editor-zh-only .editor-section-heading button{display:none!important}.profile-editor-zh-only .field-grid{grid-template-columns:1fr!important}
 /* Subtle pixel finish: decorative UI only, body copy stays readable. */
 .eyebrow,.screen-status,.screen-bottom,.station-online,.site-footer,.archive-statusbar,.monitor-top,.monitor-top-signal,.clue-number{font-family:"Courier New",Consolas,monospace!important;text-shadow:1px 0 #9bd9ed33,0 1px #9bd9ed22;image-rendering:pixelated}.hero-copy h1,.hero-portfolio strong,.resume-title{ text-shadow:1px 0 #a6d9ec44,2px 2px 0 #16384e,0 0 16px #000!important}.resume-linear-text,.profile-role,.work-detail .prose,.profile-bio{font-family:"Microsoft YaHei","微软雅黑",sans-serif!important}
+/* Global pixel typography: readable first, visibly retro second. */
+body,.site-header,.site-footer,.observatory,.archive-overlay,.admin-layout,.login-page{font-family:"Courier New","Microsoft YaHei","微软雅黑",monospace!important}
+body *{text-rendering:geometricPrecision}
+.site-header button,.site-header a,.hero-copy,.hero-copy h1,.hero-portfolio,.room-top-right,.room-instruction,.bottom-hud,.site-footer,.screen-caption,.screen-status,.screen-bottom,.connection-window,.archive-overlay,.admin-layout,.login-card,.admin-content,.admin-sidebar,.admin-header,.admin-message,.editor-field,.resume-profile,.work-detail,.profile-role,.profile-bio,.collection-page,.work-card-info,.contact-card{text-shadow:.6px 0 #b7e5f42d,0 .6px #b7e5f41c}
+.hero-copy h1,.hero-portfolio strong,.collection-heading h2,.work-detail h2,.profile-heading h2,.resume-title{letter-spacing:.04em!important}
+.resume-linear-text,.profile-role,.profile-bio,.prose,.work-card-info p,.editor-field textarea,.editor-field input{font-family:"Courier New","Microsoft YaHei","微软雅黑",monospace!important;letter-spacing:.02em!important}
+.resume-linear-text{font-size:16px!important;line-height:2!important}
+@media(max-width:760px){.resume-linear-text{font-size:15px!important}}
