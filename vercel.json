@@ -1,10 +1,11 @@
 {
-  "buildCommand": "npm install --include=dev --no-audit --no-fund && npm run check && npm run build",
+  "installCommand": "npm ci --include=dev --no-audit --no-fund",
+  "buildCommand": "npm run check && npm run build",
   "outputDirectory": "dist",
   "framework": "vite",
   "rewrites": [
     {
-      "source": "/((?!assets/|observatory.png|favicon.svg).*)",
+      "source": "/((?!assets/|observatory.png|clue-wall.png|profile-crt-wall.png|favicon.svg).*)",
       "destination": "/index.html"
     }
   ]
