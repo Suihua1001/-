@@ -3,6 +3,7 @@ import type {Profile,SiteContent,Work,WorkContent} from '../types';
 
 const categories=new Set(['games','design','art','writing']);
 const text=(value:unknown)=>value==null?'':String(value);
+const blankProfile:Profile={name:'',nameEn:'',role:'',roleEn:'',bio:'',bioEn:'',quote:'',quoteEn:'',email:'',wechat:'',experience:'',games:'',campus:'',skills:'',experienceEn:'',gamesEn:'',campusEn:'',skillsEn:'',profileTranslationStatus:'draft',personal_info:'',education:'',projects:'',resumeRaw:''};
 const jsonArray=(value:unknown):string[]=>{
   if(Array.isArray(value))return value.map(text).filter(Boolean);
   if(typeof value==='string'&&value.trim()){
@@ -60,5 +61,5 @@ export async function readCloudBaseContent():Promise<SiteContent>{
 export async function readCloudBaseAdminContent():Promise<SiteContent>{
   const profiles=await rows('profiles',q=>q.select('*').order('updated_at',{ascending:false}).limit(1));
   const works=await rows('works',q=>q.select('*').order('sort_order',{ascending:true}));
-  return {profile:profileFromPostgres(profiles[0]) as Profile,works:works.map(row=>workFromPostgres(row,true))};
+  return {profile:profileFromPostgres(profiles[0])||blankProfile,works:works.map(row=>workFromPostgres(row,true))};
 }
