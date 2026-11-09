@@ -13,7 +13,8 @@ const headers={'x-csrf-token':csrf};
 async function act(fn:()=>Promise<void>){setError('');setNotice('');setBusy(true);try{await fn();}catch(e){setError((e as Error).message);}finally{setBusy(false);}}
 async function refresh(){const d=await readCloudBaseAdminContent();setData(d);setProfile(d.profile||null);return d;}
 function leave(action:()=>void){if(dirty&&!window.confirm('有尚未保存的修改，确定离开吗？'))return;setDirty(false);setDeleting(false);setError('');setNotice('');action();}
-async function login(e:React.FormEvent){e.preventDefault();await act(async()=>{const email=username.includes('@')?username:`${username}@suihua.local`;await cloudbaseAuth.signInWithEmailAndPassword(email,password);setCsrf('cloudbase');setPassword('');const d=await readCloudBaseAdminContent();setData(d);setProfile(d.profile||null);});}
+const usernameValue = username.trim();
+await cloudbaseAuth.signInWithUsernameAndPassword(usernameValue, password);
 function chooseTab(t:string){leave(()=>{setTab(t);setEditing(null);setLanguage('zh');});}
 function chooseWork(w:Work){leave(()=>{setEditing(structuredClone(w));setLanguage('zh');});}
 function update(field:keyof WorkContent,value:string|string[]){if(!editing)return;setEditing({...editing,[language]:{...editing[language],[field]:value}});setDirty(true);}
