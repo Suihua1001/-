@@ -1,4 +1,4 @@
-import {cloudbasePg} from './cloudbase';
+import {cloudbasePg,ensureCloudbaseAccessToken} from './cloudbase';
 import type {Profile,SiteContent,Work,WorkContent} from '../types';
 
 const categories=new Set(['games','design','art','writing']);
@@ -53,12 +53,14 @@ async function rows(table:string,query:(q:any)=>any){
 }
 
 export async function readCloudBaseContent():Promise<SiteContent>{
+  await ensureCloudbaseAccessToken();
   const profiles=await rows('profiles',q=>q.select('*').order('updated_at',{ascending:false}).limit(1));
   const works=await rows('works',q=>q.select('*').eq('published',true).order('sort_order',{ascending:true}));
   return {profile:profileFromPostgres(profiles[0]) as Profile,works:works.map(row=>workFromPostgres(row,false))};
 }
 
 export async function readCloudBaseAdminContent():Promise<SiteContent>{
+  await ensureCloudbaseAccessToken();
   const profiles=await rows('profiles',q=>q.select('*').order('updated_at',{ascending:false}).limit(1));
   const works=await rows('works',q=>q.select('*').order('sort_order',{ascending:true}));
   return {profile:profileFromPostgres(profiles[0])||blankProfile,works:works.map(row=>workFromPostgres(row,true))};
