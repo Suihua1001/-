@@ -10,10 +10,10 @@ export function Admin(){const [csrf,setCsrf]=useState(''),[checking,setChecking]
 useEffect(()=>{cloudbaseAuth.getLoginState().then(async state=>{if(state){setCsrf('cloudbase');const d=await readCloudBaseAdminContent();setData(d);setProfile(d.profile||null);}}).catch(()=>{}).finally(()=>setChecking(false));},[]);
 useEffect(()=>{if(!dirty)return;const fn=(e:BeforeUnloadEvent)=>{e.preventDefault();e.returnValue='';};addEventListener('beforeunload',fn);return()=>removeEventListener('beforeunload',fn);},[dirty]);
 const headers={'x-csrf-token':csrf};
-async function act(fn:()=>Promise<void>){setError('');setNotice('');setBusy(true);try{await fn();}catch(e){setError((e as Error).message);}finally{setBusy(false);}}
+function errorMessage(e:unknown){if(e instanceof Error)return e.message;if(typeof e==='string')return e;try{const value=JSON.stringify(e);return value&&value!=='{}'?value:'请求失败，请检查 CloudBase 配置。';}catch{return '请求失败，请检查 CloudBase 配置。';}}async function act(fn:()=>Promise<void>){setError('');setNotice('');setBusy(true);try{await fn();}catch(e){setError(errorMessage(e));}finally{setBusy(false);}}
 async function refresh(){const d=await readCloudBaseAdminContent();setData(d);setProfile(d.profile||null);return d;}
 function leave(action:()=>void){if(dirty&&!window.confirm('有尚未保存的修改，确定离开吗？'))return;setDirty(false);setDeleting(false);setError('');setNotice('');action();}
-async function login(e:React.FormEvent){e.preventDefault();await act(async()=>{const email=username.includes('@')?username:`${username}@suihua.local`;await cloudbaseAuth.signInWithEmailAndPassword(email,password);setCsrf('cloudbase');setPassword('');const d=await readCloudBaseAdminContent();setData(d);setProfile(d.profile||null);});}
+async function login(e:React.FormEvent){e.preventDefault();await act(async()=>{const usernameValue=username.trim();await cloudbaseAuth.signInWithUsernameAndPassword(usernameValue,password);setCsrf('cloudbase');setPassword('');const d=await readCloudBaseAdminContent();setData(d);setProfile(d.profile||null);});}
 function chooseTab(t:string){leave(()=>{setTab(t);setEditing(null);setLanguage('zh');});}
 function chooseWork(w:Work){leave(()=>{setEditing(structuredClone(w));setLanguage('zh');});}
 function update(field:keyof WorkContent,value:string|string[]){if(!editing)return;setEditing({...editing,[language]:{...editing[language],[field]:value}});setDirty(true);}
